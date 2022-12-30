@@ -7,11 +7,12 @@ int	flag;
 void	handle_sigusr1(int sig)
 {
 	printf("SIGUSR1 received!\n");
+	flag++;
 }
 void	handle_sigusr2(int sig)
 {
 	printf("SIGUSR2 received!\n");
-	flag = 1;
+	flag++;
 }
 
 int	main(void)
@@ -25,7 +26,7 @@ int	main(void)
 
 	pid = getpid();
 	printf("pid is: %d\n", pid);
-	while (flag == 0)
+	while (flag < 40)
 	{
 		pause();
 	}
