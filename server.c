@@ -6,19 +6,29 @@ int	flag;
 
 void	handle_sigusr1(int sig)
 {
-	printf("SIGUSR1 received!\n");
+	static int	i;
+	char		c;
+	(void)sig;
+	while(i < 8)
+	{
+		c = c; //convert 8 bits into chrt
+	}
+	// printf("SIGUSR1 received!\n");
+	printf("1\n");
 	flag++;
 }
 void	handle_sigusr2(int sig)
 {
-	printf("SIGUSR2 received!\n");
+	(void)sig;
+	// printf("SIGUSR2 received!\n");
+	printf("0\n");
 	flag++;
 }
 
 int	main(void)
 {
 	int	pid;
-	struct sigaction sa, sa1;
+	struct sigaction	sa, sa1;
 	sa.sa_handler = &handle_sigusr1;
 	sa1.sa_handler = &handle_sigusr2;
 	sigaction(SIGUSR1, &sa, NULL);
@@ -26,10 +36,9 @@ int	main(void)
 
 	pid = getpid();
 	printf("pid is: %d\n", pid);
-	while (flag < 40)
+	while (1)
 	{
 		pause();
 	}
-	printf("Signal received!\n");
 	return(0);
 }
