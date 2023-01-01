@@ -2,37 +2,32 @@
 #include<unistd.h>
 #include<signal.h>
 
-int	flag;
+void	handle_sig(int sig)
+{
+	static int		i;
+	static char		c;
 
-void	handle_sigusr1(int sig)
-{
-	static int	i;
-	char		c;
-	(void)sig;
-	while(i < 8)
+	if (sig == SIGUSR1)
+		c = c | (1 << i);
+	i++;
+	if (i == 8)
 	{
-		c = c; //convert 8 bits into chrt
+		i = 0;
+		write(1, &c, 1);
+		c = 0;
 	}
-	// printf("SIGUSR1 received!\n");
-	printf("1\n");
-	flag++;
 }
-void	handle_sigusr2(int sig)
-{
-	(void)sig;
-	// printf("SIGUSR2 received!\n");
-	printf("0\n");
-	flag++;
-}
+
 
 int	main(void)
 {
 	int	pid;
-	struct sigaction	sa, sa1;
-	sa.sa_handler = &handle_sigusr1;
-	sa1.sa_handler = &handle_sigusr2;
+	struct sigaction	sa;
+	sa.sa_handler = &handle_sig;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
 	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa1, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 
 	pid = getpid();
 	printf("pid is: %d\n", pid);

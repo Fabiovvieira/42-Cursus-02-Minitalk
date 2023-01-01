@@ -14,7 +14,7 @@ void	sendstring(int pid, char *str)
 	while(str[j] != '\0')
 	{
 		c = str[j];
-		printf("%d\n", c);
+		// printf("%d\n", c);
 		while(i < 8)
 		{
 			if ((c & 1) == 1)
