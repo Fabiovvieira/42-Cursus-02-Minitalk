@@ -6,7 +6,7 @@
 /*   By: fvalli-v <fvalli-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:41:49 by fvalli-v          #+#    #+#             */
-/*   Updated: 2023/01/02 15:07:50 by fvalli-v         ###   ########.fr       */
+/*   Updated: 2023/01/03 09:12:20 by fvalli-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ void	handle_sig(int sig)
 	}
 }
 
-
 int	main(void)
 {
-	int	pid;
+	int					pid;
 	struct sigaction	sa;
 
 	sa.sa_handler = &handle_sig;
@@ -40,8 +39,8 @@ int	main(void)
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	pid = getpid();
-	ft_printf("Pid is: %d\n", pid);
+	ft_printf("Server PID is: %d\n", pid);
 	while (1)
 		pause();
-	return(0);
+	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: fvalli-v <fvalli-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:38:04 by fvalli-v          #+#    #+#             */
-/*   Updated: 2023/01/02 13:42:30 by fvalli-v         ###   ########.fr       */
+/*   Updated: 2023/01/03 09:29:46 by fvalli-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-#include<signal.h>
-#include"libft.h"
+# include<signal.h>
+# include"libft.h"
 
 #endif

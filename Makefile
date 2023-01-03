@@ -23,7 +23,7 @@ $(NAME): $(NAMELIBFT)
 	$(CC) $(CFLAGS) $(SRC_C) $(NAMELIBFT) -o client
 	$(CC) $(CFLAGS) $(SRC_S) $(NAMELIBFT) -o server
 
-bonus: $(LIBFT)
+bonus: $(NAMELIBFT)
 	$(CC) $(CFLAGS) $(SRC_C_BONUS) $(NAMELIBFT) -o client_bonus
 	$(CC) $(CFLAGS) $(SRC_S_BONUS) $(NAMELIBFT) -o server_bonus
 
